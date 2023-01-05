@@ -1,0 +1,28 @@
+//- Task06: Create form to display movie details
+//- Movie details are displayed to showcase all the attributes
+//- at first glance along with Welcoming the user who is logged in.
+
+extends layout
+
+block content
+    if user
+        h3 Welcome back #{user.name}!
+    h1 Movie Showcase
+    //- Loop through all movies
+    each movie in movies 
+        //- Display title, author, pages, rating
+        label Name:
+        //- Task08: Create button with JavaScript to movie details
+        //- href linking to movie details which allows for editing and deleting 
+        a(href="/movie/" + movie._id) #{movie.name}
+        p Description: #{movie.description}
+        p Year: #{movie.year}
+        p Rating: #{movie.rating}
+        p Genres:
+        ul
+        //- Loop through genres and print as list
+        each genre in movie.genres
+            li #{genre}
+
+        br
+        br

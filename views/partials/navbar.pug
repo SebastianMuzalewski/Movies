@@ -1,0 +1,13 @@
+nav
+    a(href="/") Home
+    br
+    if user
+        a(href="/movie/add") Add movie
+        br
+        //- Task11: Create button for logout
+        a(href="/users/logout") Logout 
+    else
+        a(href="/users/register") Register 
+        br
+        a(href="/users/login") Login 
+    br

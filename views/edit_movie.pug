@@ -1,0 +1,39 @@
+//- Task047: Form to edit movie details
+//- Similar form to add_movies
+
+extends layout 
+
+block content 
+    h1= movie.title 
+    form(method="POST" action="/movie/edit/" + movie._id)
+        #form-group 
+            label Name:
+            input.form-control(name="name" type="text" value=movie.name)
+
+        #form-group 
+            label Description:
+            input.form-control(name="description" type="text" value=movie.description)
+
+        #form-group 
+            label Year:
+            input.form-control(name="year" type="number" value=movie.year)
+
+        #form-group 
+            label Genres:
+            //- Loop through genres to assign values to checkboxes
+            for genre in genres
+                //- Check if movie genres has value of genre to assign checked
+                if movie.genres.includes(genre)
+                    input.form-control(name="genres" type="checkbox" value=genre checked=true)
+                else
+                    input.form-control(name="genres" type="checkbox" value=genre)
+                
+                label= genre
+
+        #form-group 
+            label Rating:
+            input.form-control(name="rating" type="number" value=movie.rating)
+
+        br
+        input.btn.btn-primary(type="submit" value="Submit")
+

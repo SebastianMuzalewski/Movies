@@ -1,0 +1,23 @@
+extends layout 
+
+block content 
+    h1= movie.name 
+    h5 Movie Description: #{movie.description}
+    h5 Posted by: #{posted_by}
+    p Rating: #{movie.rating}
+    p Year Produced: #{movie.year}
+    label Genres:
+    ul
+    each genre in movie.genres
+        li #{genre}
+
+    hr
+    //- //- If user logged in
+    //- if user
+    //-     //- Hide edit and delete unless movie was posted by current user
+    //-     if user._id == movie.posted_by
+    //-         //- Link to edit movie
+    a.btn.btn-default(href="/movie/edit/" + movie._id) Edit Movie
+    br
+    //- Link to delete movie
+    a.btn.delete-movie(href="#", data-id=movie._id) Delete Movie
